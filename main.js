@@ -32,5 +32,26 @@ function handleMenuOpenings() {
 }
 
 $(document).ready(() => {
+  createLinkElements($("#navLinks"), ...links);
   handleMenuOpenings();
+  const swiper = new Swiper(".swiper", {
+    // Optional parameters
+    direction: "horizontal",
+    loop: true,
+    slidesPerView: "1",
+    spaceBetween: 5,
+    // centeredSlides: true,
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+      },
+      992: {
+        slidesPerView: 5,
+      },
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+  });
 });

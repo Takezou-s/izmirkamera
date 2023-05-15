@@ -20,12 +20,15 @@
 }
 
 .sub-menu {
-  display: none;
+  display: flex;
   position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease 0s;
 }
 
 .menu.opened + .sub-menu {
   display: flex;
+  opacity: 1;
 }
 
 .sub-menu > a:hover,
