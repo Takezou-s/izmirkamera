@@ -35,3 +35,13 @@
 .sub-menu > a.highlighted {
   background-color: hsl(216, 98%, 67%) !important;
 }
+
+/* index sayfasında açıkladığımız sebepten ötürü carousel ile ilgili bu class düzenleniyor. */
+.carousel-item {
+  display: block;
+  visibility: hidden;
+}
+/* index sayfasında açıkladığımız sebepten ötürü carousel ile ilgili bu class düzenleniyor. */
+.carousel-item.active {
+  visibility: visible;
+}
