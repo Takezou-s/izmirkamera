@@ -31,9 +31,41 @@ function handleMenuOpenings() {
   });
 }
 
+function handleAccr() {
+  $(".accr + *").each((idx, obj) => {
+    const element = $(obj);
+    const toggler = element.prev();
+    toggler.on("click", (event) => {
+      if (element.attr("data-shown") === "true") {
+        element.slideUp();
+        element.attr("data-shown", "false");
+        toggler.find("i").addClass("fa-plus").removeClass("fa-minus");
+      } else {
+        element.slideDown();
+        element.attr("data-shown", "true");
+        toggler.find("i").removeClass("fa-plus").addClass("fa-minus");
+      }
+    });
+  });
+}
+
 $(document).ready(() => {
   createLinkElements($("#navLinks"), ...links);
   handleMenuOpenings();
+  handleAccr();
+  scrollEvent(
+    () => {
+      $("#back-to-top").removeClass("d-none").addClass("d-flex");
+    },
+    () => window.scrollY >= 200
+  );
+  scrollEvent(
+    () => {
+      $("#back-to-top").removeClass("d-flex").addClass("d-none");
+    },
+    () => window.scrollY < 200
+  );
+
   const swiper = new Swiper(".swiper", {
     // Optional parameters
     direction: "horizontal",

@@ -1,3 +1,4 @@
+//Navbar linklerini oluşturmak için yazdığım kod. Server kısmında gerek  olmayacak.
 function createLinkElements(parentElement, ...links) {
   links.forEach((link) => {
     const desktopElement = $("<li>", { class: `nav-item ${link.subLinks.length > 0 ? "d-lg-block d-none" : ""}` });
@@ -55,4 +56,27 @@ function createLinkElements(parentElement, ...links) {
       parentElement.append(mobileElement);
     }
   });
+}
+
+function Command(action, predicate) {
+  this.action = action;
+  this.predicate = predicate;
+}
+
+const scrollActions = [];
+let listeningScroll = false;
+function scrollHandler() {
+  scrollActions.forEach((element) => {
+    if (element.predicate()) {
+      element.action();
+    }
+  });
+}
+//"scroll" eventi tetiklendiğinde ve predicate "true" iken callbackFn çalıştırılır.
+function scrollEvent(callbackFn, predicate) {
+  if (!listeningScroll) {
+    addEventListener("scroll", scrollHandler);
+    listeningScroll = true;
+  }
+  scrollActions.push(new Command(callbackFn, predicate));
 }

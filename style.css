@@ -1,47 +1,88 @@
+/* Dar padding. */
 .narrow-padding {
   padding-left: 15%;
   padding-right: 15%;
 }
 
+/* Dar margin. */
+.narrow-margin {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+/* "hover" durumunda metnin altını çizer. */
+.underline-hover:hover {
+  text-decoration: underline !important;
+}
+
+/* Link altında link koymak için kullanılan class. Navbardaki alt linke sahip linkler için kullanılır. */
 .menu {
   transition: color 0.5s ease 0s, border-bottom-color 0.5s ease 0s;
   border-bottom: 5px solid;
   border-bottom-color: #00000000;
 }
 
+/* menu elementinin highlighted durumunda olduğunu belirtmek için kullanılır. */
 .menu.highlighted {
   background-color: var(--bs-blue) !important;
   color: white !important;
 }
 
+/* menu elementinin opened durumunda ve highlighted durumunda olmadığını belirtir. */
 .menu.opened:not(.highlighted) {
   color: var(--bs-blue) !important;
   border-bottom-color: var(--bs-blue);
 }
 
+/* menu elementinin bir sonraki kardeşi olarak eklenen elementlerde kullanılır. */
 .sub-menu {
-  display: flex;
+  display: none;
   position: absolute;
   opacity: 0;
   transition: opacity 0.5s ease 0s;
 }
 
+/* menu opened iken sub-menu elementini görünür yapar. */
 .menu.opened + .sub-menu {
   display: flex;
   opacity: 1;
 }
 
+/* sub-menu elementinin hover veya highlighted durumunda olduğunu belirtir. */
 .sub-menu > a:hover,
 .sub-menu > a.highlighted {
   background-color: hsl(216, 98%, 67%) !important;
 }
 
-/* index sayfasında açıkladığımız sebepten ötürü carousel ile ilgili bu class düzenleniyor. */
+/* carousel'in her slaytta aynı boyutta olması için düzenlendi. */
 .carousel-item {
   display: block;
   visibility: hidden;
 }
-/* index sayfasında açıkladığımız sebepten ötürü carousel ile ilgili bu class düzenleniyor. */
+
+/* carousel'in her slaytta aynı boyutta olması için düzenlendi. */
 .carousel-item.active {
   visibility: visible;
+}
+
+/* Whatsapp butonunun gölge animasyonu için kullanılan çerçeveler. */
+@keyframes flash-animation {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--bs-success-rgb), 0.7);
+  }
+
+  90% {
+    box-shadow: 0 0 0 14px rgba(var(--bs-success-rgb), 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--bs-success-rgb), 0);
+  }
+}
+
+/* Whatsapp butonunun gölge animasyonu için kullanılan class. */
+.flash {
+  animation: flash-animation 1.5s infinite;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
 }
